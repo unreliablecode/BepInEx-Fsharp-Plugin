@@ -1,9 +1,11 @@
+namespace MyBepInPlugin
+
 open BepInEx
 open UnityEngine
 
-[<BepInPlugin("unreliablecode", "IL2CPP", "1.0.0")>]
+[<BepInPlugin("unreliablecode.com", "MyPlugin", "1.0.0")>]
 type MainClass() =
-    inherit BasePlugin()
+    inherit BepInEx.Unity.IL2CPP.BasePlugin()
 
     override this.Load() =
         let newObject = GameObject("MyGameObject")
