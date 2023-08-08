@@ -6,3 +6,5 @@ Registering your own MonoBehaviour class in IL2CPP and adding the class to your 
 
 It's the complete basic in writing BepInEx plugin in Fsharp
 it's available for Mono and IL2CPP Backend!
+
+in order to able to load the F# (Fsharp) Mod you have to add the Fsharp core to the BepInEx core folder
