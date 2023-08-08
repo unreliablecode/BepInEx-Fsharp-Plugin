@@ -1,4 +1,4 @@
-# BepInEx-Fsharp-Plugin
+# BepInEx F# Plugin
 BepInEx plugin in F# (Fsharp)!
 You might be wondering how to code BepInEx plugin in F# (Fsharp)
 Here's the Example of it start from writing the MainClass, Writing a MonoBehaviour
