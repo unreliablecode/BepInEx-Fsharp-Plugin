@@ -8,16 +8,17 @@ open BepInEx.Unity.IL2CPP
 [<BepInPlugin("unreliablecode.com", "MyPlugin", "1.0.0")>]
 type MainClass() =
     inherit BepInEx.Unity.IL2CPP.BasePlugin()
-    
+
     override this.Load() =
         
         let newObject = GameObject("MyGameObject")
         Object.DontDestroyOnLoad(newObject)
-        newObject.hideFlags <- HideFlags.HideAndDontSave
-        ClassInjector.RegisterTypeInIl2Cpp<MyMonoBehaviour>()
+        ClassInjector.RegisterTypeInIl2Cpp<MyMonoBehaviour>()        
         let myMonoBehaviour = newObject.AddComponent<MyMonoBehaviour>()
-        myMonoBehaviour.Initialize()
+        newObject.hideFlags <- HideFlags.HideAndDontSave
+        myMonoBehaviour.Initialize() 
         printfn("Mod Loaded") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+    
 
 and MyMonoBehaviour() =
     class
@@ -30,9 +31,15 @@ and MyMonoBehaviour() =
 
         member this.Update() =
             this.NormalUpdate()
-
+        member this.OnGUI() =
+            GUILayout.BeginArea(new Rect(10.0f,10.0f,500.0f,500.0f))
+            GUILayout.Label("Fsharp Mod OnGUI!") //Cannot Draw GUILayout.Window since idk how do i cast the window method to GUI.WindowFunction
+            if GUILayout.Button("Fsharp Button!") then
+                printfn("Button Clicked") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+            GUILayout.EndArea()
         member private this.NormalStart() =
             printfn("MyMonoBehaviour Start") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+        
         member private this.NormalUpdate() =
-                printfn("MyMonoBehaviour Update") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+            "dO sOMETHING!"
     end
