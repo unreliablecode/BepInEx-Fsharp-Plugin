@@ -1,5 +1,5 @@
 # BepInEx-Fsharp-Plugin
-BepInEx plugin in Fsharp!
+BepInEx plugin in F# (Fsharp)!
 You might be wondering how to code BepInEx plugin in F# (Fsharp)
 Here's the Example of it start from writing the MainClass, Writing a MonoBehaviour
 Registering your own MonoBehaviour class in IL2CPP and adding the class to your Own GameObject!
