@@ -1,6 +1,7 @@
 namespace MyBepInPlugin
 
 open BepInEx
+open Il2CppInterop.Runtime
 open Il2CppInterop.Runtime.Injection
 open UnityEngine
 open BepInEx.Unity.IL2CPP
@@ -17,14 +18,14 @@ type MainClass() =
         let myMonoBehaviour = newObject.AddComponent<MyMonoBehaviour>()
         newObject.hideFlags <- HideFlags.HideAndDontSave
         myMonoBehaviour.Initialize() 
-        printfn("Mod Loaded") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+        Debug.Log(Il2CppSystem.Object(IL2CPP.ManagedStringToIl2Cpp("Mod Loaded")))
     
 
 and MyMonoBehaviour() =
     class
         inherit UnityEngine.MonoBehaviour()
         member this.Initialize() =
-            printfn("MyMonoBehaviour initialized!") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+            Debug.Log(Il2CppSystem.Object(IL2CPP.ManagedStringToIl2Cpp("My MonoBehaviour Initialized")))
 
         member this.Start() =
             this.NormalStart()
@@ -33,12 +34,12 @@ and MyMonoBehaviour() =
             this.NormalUpdate()
         member this.OnGUI() =
             GUILayout.BeginArea(new Rect(10.0f,10.0f,500.0f,500.0f))
-            GUILayout.Label("Fsharp Mod OnGUI!") //Cannot Draw GUILayout.Window since idk how do i cast the window method to GUI.WindowFunction
-            if GUILayout.Button("Fsharp Button!") then
-                printfn("Button Clicked") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+            GUILayout.Label("Fsharp Mod OnGUI!")
+            if GUILayout.Button("Fsharp Button!") then 
+                Debug.Log(Il2CppSystem.Object(IL2CPP.ManagedStringToIl2Cpp("Button Clicked!")))
             GUILayout.EndArea()
         member private this.NormalStart() =
-            printfn("MyMonoBehaviour Start") //Changed From Debug.Log since idk how to cast string to il2cpp object in FSharp
+            Debug.Log(Il2CppSystem.Object(IL2CPP.ManagedStringToIl2Cpp("My MonoBehaviour Start!")))
         
         member private this.NormalUpdate() =
             "dO sOMETHING!"
