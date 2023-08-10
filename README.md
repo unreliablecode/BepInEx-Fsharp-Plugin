@@ -46,7 +46,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Support
 
-For any questions or assistance, please [create an issue](https://github.com/unreliablecode/BepInEx-Fsharp-Plugin/issues) or contact us at [your-email@example.com](mailto:your-email@example.com).
+For any questions or assistance, please [create an issue](https://github.com/unreliablecode/BepInEx-Fsharp-Plugin/issues) or contact us at [admin@unreliablecode.com](mailto:admin@unreliablecode.com).
 
 ---
 
